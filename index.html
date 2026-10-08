@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Madini Hogar – Catálogo</title>
+<meta name="description" content="Productos con estilo seleccionados para tu espacio.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Madini Hogar – Catálogo">
+<meta property="og:description" content="Productos con estilo seleccionados para tu espacio.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Jost:ital,wght@0,300;0,400;1,600&display=swap">
+<style>
+:root{--bg:#F6F1E7;--card:#FFFFFF;--sand:#E7DDCB;--olive:#6B7152;--on:#FFFFFF;--ink:#2F2F27;--muted:#7A7767;
+--serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;--sans:"Jost",-apple-system,"Helvetica Neue",Arial,sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#22241C;--card:#2D2F25;--sand:#3A3C2F;--olive:#A5AB84;--on:#22241C;--ink:#F1ECDF;--muted:#B3AF9C}}
+:root[data-theme="dark"]{--bg:#22241C;--card:#2D2F25;--sand:#3A3C2F;--olive:#A5AB84;--on:#22241C;--ink:#F1ECDF;--muted:#B3AF9C}
+html{background:var(--bg);scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+body{min-height:100vh;min-height:100dvh}
+body.lock{overflow:hidden}
+.top{background:var(--card);border-bottom:1px solid var(--sand);display:flex;align-items:center;gap:14px;padding:12px max(16px,calc((100% - 980px)/2))}
+.top img{width:60px;height:60px;border-radius:50%;flex:none;display:block}
+.top p{margin:0;color:var(--ink);font-size:14px;line-height:1.4;max-width:30ch}
+header{max-width:980px;margin:0 auto;padding:22px 16px 6px;text-align:left}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(30px,8vw,40px);line-height:1.05;margin:0}
+.rule{width:44px;height:1px;background:var(--olive);margin:20px auto 0;border:0}
+main{max-width:980px;margin:0 auto;padding:14px 16px 56px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+@media (min-width:700px){.grid{grid-template-columns:repeat(3,1fr);gap:22px}}
+.card{all:unset;box-sizing:border-box;display:block;cursor:pointer;background:var(--card);border-radius:4px;overflow:hidden;-webkit-tap-highlight-color:transparent}
+.card:focus-visible{outline:2px solid var(--olive);outline-offset:3px}
+.card .ph{aspect-ratio:4/5;background:var(--sand);overflow:hidden}
+.card img{width:100%;height:100%;object-fit:cover;display:block}
+.card .nm{padding:13px 12px 15px;text-align:center;font-family:var(--serif);font-size:21px;line-height:1.15}
+.card .ct{display:block;font-family:var(--sans);font-size:12.5px;color:var(--muted);margin-top:4px}
+#viewer{position:fixed;inset:0;z-index:10;background:var(--bg);display:none;flex-direction:column;height:100%;height:100dvh;
+padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+#viewer.open{display:flex}
+.bar{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;min-height:56px}
+#count{font-size:15px;color:var(--muted);letter-spacing:.06em;min-width:48px}
+#close{all:unset;cursor:pointer;width:44px;height:44px;border-radius:50%;background:var(--sand);display:grid;place-items:center;font-size:22px;line-height:1;color:var(--ink)}
+#close:focus-visible{outline:2px solid var(--olive)}
+#gal{flex:1;min-height:0;display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;overscroll-behavior-x:contain}
+#gal::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100%;scroll-snap-align:center;scroll-snap-stop:always;display:flex;align-items:center;justify-content:center;padding:0 12px}
+.slide img{max-width:100%;max-height:100%;object-fit:contain;border-radius:3px;display:block}
+.info{padding:14px 22px 18px;text-align:center}
+.info h2{font-family:var(--serif);font-weight:400;font-size:28px;margin:0}
+.meta{margin:6px 0 0;color:var(--muted);font-size:15px;line-height:1.5}
+.promo{display:none;background:var(--sand);color:var(--ink);border-radius:4px;padding:26px 20px;text-align:center;margin-top:30px}
+.promo.show{display:block}
+.promo h2{font-family:var(--serif);font-weight:400;font-size:27px;margin:0}
+.promo p{margin:8px auto 0;max-width:34ch;font-size:15px;line-height:1.5}
+.promo a{display:inline-block;margin-top:16px;padding:12px 26px;border-radius:999px;background:var(--olive);color:var(--on);text-decoration:none;font-size:15px;font-weight:400}
+.search{position:relative;margin:0 0 16px}
+.search svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:18px;height:18px;stroke:var(--muted);fill:none;stroke-width:2;stroke-linecap:round;pointer-events:none}
+.search input{width:100%;box-sizing:border-box;border:1px solid var(--sand);background:var(--card);color:var(--ink);border-radius:999px;padding:13px 16px 13px 42px;font:inherit;font-size:16px;-webkit-appearance:none;appearance:none;outline:none}
+.search input:focus{border-color:var(--olive)}
+.search input::placeholder{color:var(--muted)}
+#none{display:none;text-align:center;color:var(--muted);font-size:15px;line-height:1.5;padding:26px 10px}
+#none a{color:var(--olive)}
+.dots{display:flex;gap:7px;justify-content:center;margin-top:12px}
+.dots i{width:6px;height:6px;border-radius:50%;background:var(--sand)}
+.dots i.on{background:var(--olive)}
+#vp{margin-top:8px;font-family:var(--serif);font-size:22px;line-height:1.35;color:var(--olive)}
+#wa{display:none;margin:16px auto 0;padding:13px 26px;border-radius:999px;background:var(--olive);color:var(--on);text-decoration:none;font-size:16px;font-weight:400;width:max-content;max-width:100%}
+#wa.show{display:block}
+@media (prefers-reduced-motion:no-preference){#viewer.open{animation:in .22s ease-out}@keyframes in{from{opacity:0}to{opacity:1}}}
+</style>
+</head>
+<body>
+<div class="top"><img src="/imagenes/logo.png" alt="Madini Hogar" width="60" height="60"><p>productos con estilo seleccionados para tu espacio</p></div>
+<header><h1>Catálogo</h1></header>
+<main>
+<div class="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="q" type="search" placeholder="Buscar productos" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="search" aria-label="Buscar productos"></div>
+<div class="grid" id="grid"></div>
+<div id="none">No encontramos ese producto. <a id="nwa" href="#" target="_blank" rel="noopener">Escribinos por WhatsApp</a> y te ayudamos.</div>
+<section class="promo" id="promo"><h2>Cuadros personalizados</h2><p>Mandanos la imagen, frase o inspiración que tengas y nosotros la adaptamos y la preparamos para imprimir. Vos elegís la idea y el tamaño ✨</p><a id="cpwa" href="#" target="_blank" rel="noopener">Consultar por WhatsApp</a></section>
+</main>
+
+<div id="viewer" role="dialog" aria-modal="true" aria-label="Detalle del diseño">
+<div class="bar"><span id="count"></span><button id="close" aria-label="Cerrar">&times;</button></div>
+<div id="gal"></div>
+<div class="info"><h2 id="vt"></h2><p class="meta" id="vd"></p><p class="meta" id="vm"></p><div id="vp"></div><div class="dots" id="dots"></div><a id="wa" href="#" target="_blank" rel="noopener">Consultar por WhatsApp</a></div>
+</div>
+
+<script>
+var IMG={"caja-chica-01": "/imagenes/caja-chica-01.jpg", "caja-chica-02": "/imagenes/caja-chica-02.jpg", "caja-chica-03": "/imagenes/caja-chica-03.jpg", "caja-chica-04": "/imagenes/caja-chica-04.jpg", "caja-chica-05": "/imagenes/caja-chica-05.jpg", "caja-chica-06": "/imagenes/caja-chica-06.jpg", "caja-chica-07": "/imagenes/caja-chica-07.jpg", "caja-chica-08": "/imagenes/caja-chica-08.jpg", "caja-chica-09": "/imagenes/caja-chica-09.jpg", "caja-chica-10": "/imagenes/caja-chica-10.jpg", "caja-chica-11": "/imagenes/caja-chica-11.jpg", "caja-chica-12": "/imagenes/caja-chica-12.jpg", "caja-grande-01": "/imagenes/caja-grande-01.jpg", "caja-grande-02": "/imagenes/caja-grande-02.jpg", "caja-grande-03": "/imagenes/caja-grande-03.jpg", "caja-grande-04": "/imagenes/caja-grande-04.jpg", "caja-grande-05": "/imagenes/caja-grande-05.jpg", "caja-grande-06": "/imagenes/caja-grande-06.jpg", "caja-grande-07": "/imagenes/caja-grande-07.jpg", "caja-grande-08": "/imagenes/caja-grande-08.jpg", "caja-grande-09": "/imagenes/caja-grande-09.jpg", "caja-grande-10": "/imagenes/caja-grande-10.jpg", "caja-grande-11": "/imagenes/caja-grande-11.jpg", "duo-01": "/imagenes/duo-01.jpg", "duo-02": "/imagenes/duo-02.jpg", "duo-03": "/imagenes/duo-03.jpg", "duo-04": "/imagenes/duo-04.jpg", "duo-05": "/imagenes/duo-05.jpg", "duo-06": "/imagenes/duo-06.jpg", "duo-07": "/imagenes/duo-07.jpg", "duo-08": "/imagenes/duo-08.jpg", "duo-09": "/imagenes/duo-09.jpg", "duo-10": "/imagenes/duo-10.jpg", "duo-11": "/imagenes/duo-11.jpg", "espejo-led-01": "/imagenes/espejo-led-01.jpg", "espejo-led-02": "/imagenes/espejo-led-02.jpg", "espejo-led-03": "/imagenes/espejo-led-03.jpg", "espejo-led-04": "/imagenes/espejo-led-04.jpg", "espejo-led-05": "/imagenes/espejo-led-05.jpg", "florero-blanco-negro-01": "/imagenes/florero-blanco-negro-01.jpg", "florero-blanco-negro-02": "/imagenes/florero-blanco-negro-02.jpg", "florero-blanco-negro-03": "/imagenes/florero-blanco-negro-03.jpg", "florero-blanco-negro-04": "/imagenes/florero-blanco-negro-04.jpg", "florero-grande-negro-01": "/imagenes/florero-grande-negro-01.jpg", "florero-grande-negro-02": "/imagenes/florero-grande-negro-02.jpg", "florero-chico-lego-01": "/imagenes/florero-chico-lego-01.jpg", "maceta-nordica-01": "/imagenes/maceta-nordica-01.jpg", "taza-burbuja-01": "/imagenes/taza-burbuja-01.jpg", "taza-burbuja-02": "/imagenes/taza-burbuja-02.jpg", "taza-nube-01": "/imagenes/taza-nube-01.jpg", "vaso-bamboo-01": "/imagenes/vaso-bamboo-01.jpg", "vaso-bamboo-02": "/imagenes/vaso-bamboo-02.jpg", "porta-discos-01": "/imagenes/porta-discos-01.jpg", "porta-discos-02": "/imagenes/porta-discos-02.jpg", "porta-hisopos-01": "/imagenes/porta-hisopos-01.jpg", "porta-hisopos-02": "/imagenes/porta-hisopos-02.jpg", "jabonera-vidrio-01": "/imagenes/jabonera-vidrio-01.jpg"};
+var TH={"caja-chica-01": "/imagenes/miniaturas/caja-chica-01.jpg", "caja-grande-01": "/imagenes/miniaturas/caja-grande-01.jpg", "duo-01": "/imagenes/miniaturas/duo-01.jpg", "espejo-led-01": "/imagenes/miniaturas/espejo-led-01.jpg", "florero-blanco-negro-01": "/imagenes/miniaturas/florero-blanco-negro-01.jpg", "florero-grande-negro-01": "/imagenes/miniaturas/florero-grande-negro-01.jpg", "florero-chico-lego-01": "/imagenes/miniaturas/florero-chico-lego-01.jpg", "maceta-nordica-01": "/imagenes/miniaturas/maceta-nordica-01.jpg", "taza-burbuja-01": "/imagenes/miniaturas/taza-burbuja-01.jpg", "taza-nube-01": "/imagenes/miniaturas/taza-nube-01.jpg", "vaso-bamboo-01": "/imagenes/miniaturas/vaso-bamboo-01.jpg", "porta-discos-01": "/imagenes/miniaturas/porta-discos-01.jpg", "porta-hisopos-01": "/imagenes/miniaturas/porta-hisopos-01.jpg", "jabonera-vidrio-01": "/imagenes/miniaturas/jabonera-vidrio-01.jpg"};
+/* Para sumar productos: agregá un bloque nuevo acá. Los campos opcionales (precio, medidas, disponibilidad, categoria) aparecen solos si los completás. */
+var WHATSAPP="5491124664321"; /* ej: "5491122334455" (con código de país, sin + ni espacios). Si está vacío, no se muestra el botón. */
+var PRODUCTS=[
+ {id:"caja-chica",nombre:"Caja chica",etiqueta:"11 modelos",descripcion:"Caja decorativa símil libro con cierre magnético.",fotos:["caja-chica-01", "caja-chica-02", "caja-chica-03", "caja-chica-04", "caja-chica-05", "caja-chica-06", "caja-chica-07", "caja-chica-08", "caja-chica-09", "caja-chica-10", "caja-chica-11", "caja-chica-12"],precios:["$8.000"],medidas:"22 x 16,5 x 3 cm",disponibilidad:"",categoria:""},
+ {id:"caja-grande",nombre:"Caja grande",etiqueta:"11 modelos",descripcion:"Caja decorativa símil libro con cierre magnético.",fotos:["caja-grande-01", "caja-grande-02", "caja-grande-03", "caja-grande-04", "caja-grande-05", "caja-grande-06", "caja-grande-07", "caja-grande-08", "caja-grande-09", "caja-grande-10", "caja-grande-11"],precios:["$10.000"],medidas:"25 x 18 x 3,8 cm",disponibilidad:"",categoria:""},
+ {id:"duo",nombre:"Dúo",etiqueta:"11 combinaciones",descripcion:"Dúo de cajas decorativas símil libro con cierre magnético: una grande y una chica.",fotos:["duo-01", "duo-02", "duo-03", "duo-04", "duo-05", "duo-06", "duo-07", "duo-08", "duo-09", "duo-10", "duo-11"],precios:["$16.000"],medidas:"Grande 25 x 18 x 3,8 cm + chica 22 x 16,5 x 3 cm",disponibilidad:"",categoria:""},
+ {id:"espejo-led",nombre:"Espejo LED transportable",descripcion:"Espejo LED con 3 intensidades de luz: fría, cálida y ambas.",fotos:["espejo-led-01", "espejo-led-02", "espejo-led-03", "espejo-led-04", "espejo-led-05"],precios:["$15.000"],medidas:"18 cm de diámetro x 29 cm de alto",disponibilidad:"",categoria:""},
+ {id:"florero-blanco-negro",nombre:"Florero blanco y negro",descripcion:"Florero de plástico, en blanco y en negro.",fotos:["florero-blanco-negro-01", "florero-blanco-negro-02", "florero-blanco-negro-03", "florero-blanco-negro-04"],precios:["$7.000"],medidas:"28 cm de alto",disponibilidad:"",categoria:""},
+ {id:"florero-grande-negro",nombre:"Florero grande negro",descripcion:"Florero de acrílico negro, con hojas de eucalipto.",fotos:["florero-grande-negro-01", "florero-grande-negro-02"],precios:["$10.000"],medidas:"10 x 30 cm",disponibilidad:"",categoria:""},
+ {id:"florero-chico-lego",nombre:"Florero chico con flores de lego",descripcion:"Florero con flores de lego.",fotos:["florero-chico-lego-01"],precios:["$8.000"],medidas:"10 x 20 cm",disponibilidad:"",categoria:""},
+ {id:"maceta-nordica",nombre:"Maceta nórdica",fotos:["maceta-nordica-01"],precioCard:"Desde $9.500",precios:["Chica · $9.500","Grande · $12.000","Las dos · $18.000"],medidas:"",disponibilidad:"",categoria:""},
+ {id:"taza-burbuja",nombre:"Taza burbuja",fotos:["taza-burbuja-01","taza-burbuja-02"],precioCard:"$7.500",precios:["1 taza · $7.500","2 tazas · $14.000"],medidas:"",disponibilidad:"",categoria:""},
+ {id:"taza-nube",nombre:"Taza nube",fotos:["taza-nube-01"],precioCard:"$8.500",precios:["1 taza · $8.500","2 tazas · $15.000"],medidas:"",disponibilidad:"",categoria:""},
+ {id:"vaso-bamboo",nombre:"Vaso con tapa bamboo",descripcion:"Vaso de vidrio con tapa de bamboo y sorbete.",fotos:["vaso-bamboo-01","vaso-bamboo-02"],precioCard:"$9.500",precios:["1 vaso · $9.500","2 vasos · $17.000"],medidas:"",disponibilidad:"",categoria:""},
+ {id:"porta-discos",nombre:"Porta discos de algodón",descripcion:"",fotos:["porta-discos-01", "porta-discos-02"],precios:["$7.500"],medidas:"",disponibilidad:"",categoria:""},
+ {id:"porta-hisopos",nombre:"Porta hisopos",descripcion:"",fotos:["porta-hisopos-01", "porta-hisopos-02"],precios:["$7.500"],medidas:"",disponibilidad:"",categoria:""},
+ {id:"jabonera-vidrio",nombre:"Jabonera de vidrio",descripcion:"Dispenser de jabón de vidrio.",fotos:["jabonera-vidrio-01"],precios:["$17.000"],medidas:"",disponibilidad:"",categoria:""}
+];
+var $=function(i){return document.getElementById(i)};
+var grid=$("grid"),viewer=$("viewer"),gal=$("gal"),cur=null,last=null;
+if(WHATSAPP){$("cpwa").href="https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent("Hola! Quiero consultar por un cuadro personalizado");$("promo").className="promo show"}
+var cards=[];
+var BUSCA={"caja-chica":"libro caja magnetica the branch bordeaux cannes cappuccino coffee cafe latte abstract modern art the coffee club comptoir","caja-grande":"libro caja magnetica the branch the nature madeira americano cappuccino coffee cafe latte abstract le collage ecole d'art esthetique comptoir the coffee club","duo":"libro caja magnetica pareja grande chica the branch bordeaux cannes madeira pinot gris coffee cafe abstract modern art","taza-burbuja":"taza cafe te desayuno merienda vidrio","taza-nube":"taza cafe te desayuno vidrio transparente","vaso-bamboo":"vaso tapa bambu sorbete cafe frio vidrio","maceta-nordica":"maceta planta redonda blanca negra","espejo-led":"espejo led luz luces maquillaje tocador portatil plegable fria calida","florero-blanco-negro":"florero jarron flores plastico decoracion","florero-grande-negro":"florero jarron acrilico eucalipto hojas decoracion","florero-chico-lego":"florero jarron flores lego decoracion","porta-discos":"porta discos algodon desmaquillante bano organizador","porta-hisopos":"porta hisopos cotonetes bano organizador","jabonera-vidrio":"jabonera dispenser jabon liquido bano vidrio"};
+function nz(s){return String(s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"")}
+PRODUCTS.forEach(function(p,i){
+ var b=document.createElement("button");b.className="card";b.setAttribute("aria-label","Ver "+p.nombre);
+ var ph=document.createElement("div");ph.className="ph";
+ var im=new Image();im.src=TH[p.fotos[0]]||IMG[p.fotos[0]];im.alt=p.nombre;im.decoding="async";ph.appendChild(im);
+ var nm=document.createElement("div");nm.className="nm";nm.textContent=p.nombre;
+ var lb=[p.etiqueta||(p.fotos.length>1?p.fotos.length+" fotos":""),p.precioCard||(p.precios&&p.precios[0])||""].filter(Boolean).join("  ·  ");if(lb){var s=document.createElement("span");s.className="ct";s.textContent=lb;nm.appendChild(s)}
+ b.appendChild(ph);b.appendChild(nm);b.onclick=function(){openV(i,true)};grid.appendChild(b);cards.push({el:b,txt:nz([p.nombre,p.descripcion,p.etiqueta,p.categoria,p.busca||BUSCA[p.id]].join(" "))});
+});
+function filt(){var q=nz($("q").value).trim().split(/\s+/).filter(Boolean),n=0;cards.forEach(function(c){var ok=q.every(function(w){return c.txt.indexOf(w)>-1});c.el.style.display=ok?"":"none";if(ok)n++});$("none").style.display=n?"none":"block"}
+$("q").addEventListener("input",filt);
+if(WHATSAPP)$("nwa").href="https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent("Hola! Estoy buscando un producto y no lo encuentro en el catálogo");
+function openV(i,push){
+ var p=PRODUCTS[i];cur=i;last=document.activeElement;gal.innerHTML="";$("dots").innerHTML="";
+ p.fotos.forEach(function(k,n){
+  var s=document.createElement("div");s.className="slide";var im=new Image();im.src=IMG[k];im.alt=p.nombre+" – foto "+(n+1);im.decoding="async";s.appendChild(im);gal.appendChild(s);
+  var d=document.createElement("i");$("dots").appendChild(d);
+ });
+ $("vt").textContent=p.nombre;$("vd").textContent=p.descripcion||"";$("vd").style.display=p.descripcion?"block":"none";
+ var m=[p.categoria,p.medidas,p.disponibilidad].filter(Boolean).join("  ·  ");$("vp").innerHTML="";(p.precios||[]).forEach(function(x){var d=document.createElement("div");d.textContent=x;$("vp").appendChild(d)});
+ $("vm").textContent=m;$("vm").style.display=m?"block":"none";
+ $("dots").style.display=p.fotos.length>1?"flex":"none";$("count").style.visibility=p.fotos.length>1?"visible":"hidden";
+ var wa=$("wa");if(WHATSAPP){wa.href="https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent("Hola! Quiero consultar por: "+p.nombre);wa.className="show"}else{wa.className=""}
+ viewer.classList.add("open");document.body.classList.add("lock");gal.scrollLeft=0;upd();$("close").focus({preventScroll:true});
+ if(push){try{history.pushState({v:1},"")}catch(e){}}
+}
+function closeV(fromPop){
+ if(cur===null)return;viewer.classList.remove("open");document.body.classList.remove("lock");cur=null;
+ if(!fromPop){try{if(history.state&&history.state.v)history.back()}catch(e){}}
+ if(last&&last.focus)last.focus({preventScroll:true});
+}
+function upd(){
+ if(cur===null)return;var n=PRODUCTS[cur].fotos.length,w=gal.clientWidth||1,k=Math.min(n-1,Math.max(0,Math.round(gal.scrollLeft/w)));
+ $("count").textContent=(k+1)+"/"+n;var ds=$("dots").children;for(var j=0;j<ds.length;j++)ds[j].className=j===k?"on":"";
+}
+gal.addEventListener("scroll",upd,{passive:true});
+$("close").onclick=function(){closeV(false)};
+window.addEventListener("popstate",function(){closeV(true)});
+document.addEventListener("keydown",function(e){
+ if(cur===null)return;
+ if(e.key==="Escape")closeV(false);
+ if(e.key==="ArrowRight")gal.scrollBy({left:gal.clientWidth,behavior:"smooth"});
+ if(e.key==="ArrowLeft")gal.scrollBy({left:-gal.clientWidth,behavior:"smooth"});
+});
+window.addEventListener("resize",upd);
+</script>
+</body>
+</html>
